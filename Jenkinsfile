@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '5'))
+      }
     environment{
        DOCKERHUB_CREDENTIALS= credentials('4dcb86eb-513a-4ef5-b6f1-2a66fb4e9459')
     }
