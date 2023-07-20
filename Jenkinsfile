@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment{
-       DOCKERHUB_CREDENTIALS= credentials('dockerhub')
+       DOCKERHUB_CREDENTIALS= credentials('4dcb86eb-513a-4ef5-b6f1-2a66fb4e9459')
     }
     stages{
         stage("checkout"){
@@ -28,8 +28,8 @@ pipeline {
                steps {
                  sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
                }
-             }
-             stage('Push') {
+        }
+        stage('Push') {
                steps {
                  sh 'docker push vrajs/devops'
                }
@@ -39,6 +39,6 @@ pipeline {
              always {
                sh 'docker logout'
              }
-           }
+         }
     }
 }
